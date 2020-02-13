@@ -1,30 +1,32 @@
-var speedTest = require('speedtest-net');
-var config = require('./config.json');
-var fs = require('fs');
-var moment = require('moment');
-var log_file = () => config.outdir + '/' + 'log-' + moment().format('DD-MM-YYYY') + '.csv';
-var check_log_file = () => {
+const speedTest = require('speedtest-net');
+const config = require('./config.json');
+const fs = require('fs');
+const moment = require('moment');
+const mssql = require('mssql');
+
+let log_file = () => config.outdir + '/' + 'log-' + moment().format('DD-MM-YYYY') + '.csv';
+
+let check_log_file = () => {
     if(!fs.existsSync(log_file())){
         fs.writeFileSync(log_file(), "Time,Download,Upload");
     }
 }
 
-var log = (data) => {
-    console.log(data.speeds.download, data.speeds.upload)
-    check_log_file();
-    fs.appendFileSync(log_file(),"\r\n" + moment().format('hh:mm A') + "," + data.speeds.download + "," + data.speeds.upload);
+let log = (data) => {
+    if(config.log_file){
+        check_log_file();
+        fs.appendFileSync(log_file(),"\r\n" + moment().format('hh:mm A') + "," + data.speeds.download + "," + data.speeds.upload);
+    }
+    
     if(config.duration && config.duration > 0)
         setTimeout(speed_check, config.duration);
 };
 
-var error = (error) => {
+let error = (error) => {
     console.log(error);
     if(config.duration && config.duration > 0)
         setTimeout(speed_check, config.duration);
 }
 
-var speed_check = () => {
-    speedTest().on('data', log).on('error', error);
-}
-
+let speed_check = () => speedTest().on('data', log).on('error', error);
 speed_check();

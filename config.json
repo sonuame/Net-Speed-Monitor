@@ -1,4 +1,13 @@
 {
     "duration" : 500,
-    "outdir" : "."
+    "log_file" : true,
+    "db_log" : true,
+    "outdir" : ".",
+    "server" : "Rack",
+    "db" : {
+        "host" : "tripsaathi.com:1433",
+        "username" : "speed-test",
+        "password" : "Avenue@1122",
+        "database" : "TripSaathi-Core"
+    }
 }

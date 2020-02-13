@@ -4,8 +4,8 @@
   "description": "Constantly query and log the internet speed",
   "main": "index.js",
   "scripts": {
-    "start" : "node index",
-    "cluster" : "npx pm2 delete all & npx pm2 start pm2.yaml"
+    "start": "node index",
+    "cluster": "npx pm2 delete all & npx pm2 start pm2.yaml"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,8 @@
   "homepage": "https://github.com/sonuame/Net-Speed-Monitor#readme",
   "dependencies": {
     "moment": "^2.24.0",
+    "mssql": "^6.0.1",
+    "rxjs": "^6.5.4",
     "speedtest-net": "^1.6.2"
   }
 }
