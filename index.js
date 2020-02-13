@@ -4,7 +4,7 @@ const fs = require('fs');
 const moment = require('moment');
 const mssql = require('mssql');
 
-let log_file = () => config.outdir + '/' + 'log-' + moment().format('DD-MM-YYYY') + '.csv';
+let log_file = () => config.outdir.replace('\\','/') + '/' + 'net-speed-log-' + moment().format('DD-MM-YYYY') + '.csv';
 
 let check_log_file = () => {
     if(!fs.existsSync(log_file())){
