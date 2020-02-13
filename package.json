@@ -1,0 +1,24 @@
+{
+  "name": "netspeedmonitor",
+  "version": "1.0.0",
+  "description": "Constantly query and log the internet speed",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node index",
+    "cluster" : "npx pm2 delete all & npx pm2 start pm2.yaml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonuame/Net-Speed-Monitor.git"
+  },
+  "author": "Sunil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sonuame/Net-Speed-Monitor/issues"
+  },
+  "homepage": "https://github.com/sonuame/Net-Speed-Monitor#readme",
+  "dependencies": {
+    "moment": "^2.24.0",
+    "speedtest-net": "^1.6.2"
+  }
+}

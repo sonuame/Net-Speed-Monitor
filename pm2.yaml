@@ -1,0 +1,5 @@
+apps:
+  - script: ./index.js
+    name : speed monitor
+    instances: 1
+    exec_mode: cluster
