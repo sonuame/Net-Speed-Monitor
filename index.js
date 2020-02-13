@@ -12,12 +12,24 @@ let check_log_file = () => {
     }
 }
 
-let log = (data) => {
+let log_to_file = async (data) => {
     if(config.log_file){
         check_log_file();
         fs.appendFileSync(log_file(),"\r\n" + moment().format('hh:mm A') + "," + data.speeds.download + "," + data.speeds.upload);
     }
+}
+
+let log_to_db = async (data) => {
+    if(config.db_log){
+        
+    }
+}
+
+let log = async (data) => {
     
+    await log_to_file(data);
+    await log_to_db(data);
+
     if(config.duration && config.duration > 0)
         setTimeout(speed_check, config.duration);
 };
